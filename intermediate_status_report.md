@@ -4,7 +4,7 @@
 **Competition:** Kaggle Spaceship Titanic  
 **Prediction target:** `Transported`  
 **Evaluation metric:** Accuracy  
-**Team:** Project lead (team member 1) and Adedamola
+**Team:** Eugine and Adedamola
 
 ## 1. Project objective
 
