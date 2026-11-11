@@ -17,7 +17,7 @@ This team project develops and evaluates machine-learning models to predict whet
 
 | Member | Proposed responsibility |
 |---|---|
-| Project lead (team member 1) | Coordinate the project; data audit and dictionary; EDA; feature engineering; integration; report and presentation coordination |
+| Eugine | Coordinate the project; data audit and dictionary; EDA; feature engineering; integration; report and presentation coordination |
 | Adedamola | Independent review/reproduction of EDA; alternative feature and model experiments; cross-validation and tuning; error analysis; reproducibility review |
 
 These are proposed responsibilities, not a claim that every task is already complete. The team should confirm the allocation and update this section to reflect actual work. Each member should commit their own contributions using their own GitHub account. Do not share credentials or create commits on behalf of the other member.
