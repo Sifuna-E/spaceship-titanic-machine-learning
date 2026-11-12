@@ -19,10 +19,8 @@ The team reports that the instructor approved this competition despite its “Ge
 
 | Member | Role (proposed; update with evidence as work is completed) |
 |---|---|
-| Project lead (team member 1) | Coordination, data audit, EDA integration, feature engineering, documentation and presentation coordination. |
+| Eugine | Coordination, data audit, EDA integration, feature engineering, documentation and presentation coordination. |
 | Adedamola | Independent EDA review, additional feature/model experiments, validation and tuning, error analysis, reproducibility review. |
-
-Do not describe proposed tasks as completed until the work is done. Each member must use their own GitHub account and commit their own contributions.
 
 ## Repository structure
 
