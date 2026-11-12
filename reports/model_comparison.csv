@@ -1,0 +1,6 @@
+Model,Validation_Accuracy,Notes
+Random Forest,0.8045,Latest Colab holdout result; working candidate
+Tuned Random Forest,0.8028,Latest Colab holdout result; tuning did not improve score
+Gradient Boosting,0.7907,Latest Colab holdout result
+Logistic Regression,0.7901,Latest Colab holdout result
+Majority Baseline,0.5037,Latest Colab holdout result

@@ -1,118 +1,108 @@
 # Intermediate Status Report — Spaceship Titanic
 
-**Project status:** Initial modelling pipeline completed; validation and documentation improvements in progress.  
+**Report date:** Thursday, 12 November 2026  
+**Checkpoint target:** Friday, 13 November 2026  
+**Project status:** Substantial initial workflow complete; validation robustness, team contribution evidence and final reproducibility checks remain in progress.  
 **Competition:** Kaggle Spaceship Titanic  
-**Prediction target:** `Transported`  
-**Evaluation metric:** Accuracy  
-**Team:** Eugine and Adedamola
+**Target / metric:** `Transported` / accuracy
 
-## 1. Project objective
+## 1. Objective and approval
 
-The project develops a binary classification model to predict whether each passenger was transported to another dimension. The Kaggle competition evaluates predictions using accuracy, the proportion of passenger outcomes predicted correctly.
+The project develops a binary classifier to predict whether a passenger was transported to another dimension. The Kaggle metric is accuracy. The team reports that the instructor approved use of this competition despite its “Getting Started” category. The written approval should be retained and checked against the course restriction before final assessment.
 
-The competition is listed in Kaggle's “Getting Started” category. The team reports that the instructor approved the topic; written confirmation of the exception should be retained with the project records.
+## 2. Data overview and audit
 
-## 2. Dataset and initial audit
+The labeled training data contain 8,693 rows and 14 columns; the unlabeled test data contain 4,277 rows and 13 columns. The target is nearly balanced: 4,315 `False` (49.64%) and 4,378 `True` (50.36%). There are no duplicate training rows or duplicate passenger IDs.
 
-| Dataset | Rows | Columns |
-|---|---:|---:|
-| Labeled training data | 8,693 | 14 |
-| Unlabeled test data | 4,277 | 13 |
+Missingness occurs in 12 training predictors (179–217 missing values per field; maximum 2.50%) and in the corresponding test predictors (80–106 missing values; maximum 2.48%). No target values are missing. The complete train/test missingness audit and variable definitions are in `reports/data_dictionary.md`.
 
-The training target is nearly balanced: 4,315 passengers (49.64%) are labeled `False` and 4,378 (50.36%) are labeled `True`. No duplicate training rows or duplicate training `PassengerId` values were found.
+## 3. EDA and anomaly decisions
 
-The predictors include passenger identifiers, home planet, cryosleep status, cabin, destination, age, VIP status, five amenity-spending variables, and name. A full field-level description and training missingness table are provided in `data_dictionary.md`.
+The EDA includes target distribution, numeric distributions, categorical distributions and selected target relationships. The four figures are committed under `reports/figures/`.
 
-## 3. Exploratory data analysis
+Explicit training-data integrity checks found: 0 duplicate rows; 0 duplicate passenger IDs; 0 malformed passenger IDs; 0 malformed non-missing cabin strings; 0 negative ages; 0 ages above 100; and 0 negative spending cells. There are 3,653 rows with zero total recorded spending and 0 rows with all five spending fields missing. Zero spending is retained as a valid behaviour, not treated as an error.
 
-The initial EDA examined target balance, missingness, numeric distributions, categorical frequencies, and selected relationships with `Transported`.
+Tukey's 1.5×IQR rule flags 77 age values above the upper fence and 1,788–1,861 values for each spending variable. These are distributional flags, not confirmed errors. The spending variables are zero-inflated and right-skewed, and the observed maxima are retained. No values have been deleted or winsorised on the basis of IQR alone. The full counts, fences and decisions are in the data dictionary.
 
-Key observations:
-- The target is nearly balanced, making the majority-class baseline approximately 50%.
-- Spending variables contain many zeros and are strongly right-skewed.
-- Age is concentrated among younger and middle-aged passengers, with a tail toward older ages.
-- Initial plots suggest differences in transport rates across categories such as `CryoSleep`, `HomePlanet`, and cabin deck. These are descriptive associations, not evidence of causation.
-- Large spending values have not been automatically removed as errors; their plausibility needs to be assessed rather than treating every extreme value as invalid.
+## 4. Preprocessing and modelling
 
-## 4. Missing values and treatment
+The current multi-model notebook pipeline uses median imputation plus numeric missingness indicators, most-frequent categorical imputation, one-hot encoding, and numeric standardisation. Preprocessing is fitted on the training partition and applied to the holdout partition. The latest reported comparison used a stratified 80/20 split with `random_state=42`.
 
-Missing values occur in 12 predictor fields. Counts in the 8,693-row training dataset range from 179 (`Age`, 2.06%) to 217 (`CryoSleep`, 2.50%). No missing values were recorded for `PassengerId` or `Transported`.
-
-Current preprocessing:
-- Numeric fields: median imputation, with numeric missingness indicators.
-- Categorical fields: most-frequent imputation.
-- Categorical encoding: one-hot encoding with unknown categories ignored.
-- Numeric scaling: standardization in the numeric preprocessing pipeline.
-
-The preprocessing is fitted on the training partition and then applied to validation data. This reduces the risk of preprocessing leakage. The team should additionally inspect test-set missingness and assess whether explicit categorical missingness indicators improve performance.
-
-## 5. Feature engineering
-
-The current workflow constructs candidate features including:
-- Passenger group size and passenger number from `PassengerId`.
-- Cabin deck, cabin number, and cabin side from `Cabin`.
-- Total spending, log total spending, any-spend and no-spend indicators.
-- Age bands.
-- Surname frequency/count.
-
-These features are plausible representations of group structure, cabin location, spending behaviour, and age categories. Their incremental value must be established through a controlled ablation using identical validation splits/folds and model settings. The team is **not** treating results from different notebook runs as a definitive feature-engineering gain.
-
-## 6. Validation design and current model results
-
-The current reported model comparison uses a stratified 80/20 train/validation split with `random_state=42`. Accuracy is calculated on the held-out validation partition. Preprocessing is fitted on the training partition only.
-
-| Model | Latest validation accuracy |
+| Model | Holdout validation accuracy |
 |---|---:|
 | Random Forest | **0.8045** |
 | Tuned Random Forest | 0.8028 |
 | Gradient Boosting | 0.7907 |
 | Logistic Regression | 0.7901 |
-| Majority-class baseline | 0.5037 |
+| Majority baseline | 0.5037 |
 
-The current working candidate is Random Forest (0.8045). The tuned Random Forest (0.8028) did not improve the current holdout result, so additional tuning is not automatically justified. The team will prioritize robust validation and reproducibility over tuning for its own sake.
+Random Forest is the current working candidate. The tuned Random Forest did not improve the reported holdout accuracy. These values are local validation scores, not Kaggle leaderboard scores. The generated `submission.csv` contains 4,277 predictions and has not been uploaded to Kaggle.
 
-**Metric qualification:** These values are local validation accuracies. They are not Kaggle leaderboard scores. The `submission.csv` file has been generated and contains 4,277 predictions with the required `PassengerId` and `Transported` columns, but it has **not** been uploaded to Kaggle.
+## 5. Controlled feature ablation — completed 12 November 2026
 
-## 7. Work completed to date
+A controlled experiment was run using one fixed stratified 80/20 split (`random_state=42`), the same preprocessing, and the same Random Forest settings (250 trees, `min_samples_leaf=2`, `max_features='sqrt'`, `random_state=42`) for both feature sets.
 
-- Loaded the training, test, and sample-submission datasets in Google Colab.
-- Inspected dataset dimensions, column types, target distribution, missingness, and duplicates.
-- Produced initial EDA plots and examined key feature/target relationships.
-- Implemented numeric and categorical preprocessing.
-- Engineered candidate passenger-group, cabin, spending, and age features.
-- Established a majority-class baseline.
-- Compared three model families: logistic regression, random forest, and gradient boosting.
-- Ran an initial randomized hyperparameter search for Random Forest.
-- Generated a Kaggle-format prediction file and checked that it contains 4,277 predictions.
-- Saved the Colab notebook to the project GitHub repository.
-- Invited Adedamola to collaborate; acceptance and substantive contributions are still to be confirmed.
+| Feature set | Accuracy | Precision | Recall | F1 |
+|---|---:|---:|---:|---:|
+| Core predictors | 0.7872 | 0.7875 | 0.7911 | 0.7893 |
+| Core + engineered predictors | **0.8056** | 0.8172 | 0.7911 | 0.8039 |
 
-## 8. Remaining work and immediate plan
+The expanded feature block improved accuracy by **0.0184 (1.84 percentage points)** on this holdout. The core set comprises the non-identifier original predictors (HomePlanet, CryoSleep, Destination, Age, VIP and the five spend variables). The expanded set adds cabin deck/number/side, passenger sequence and group size, age band, surname frequency, total/log spending, observed spend-field count and any/no-spend indicators. Raw `PassengerId`, `Name` and raw high-cardinality `Cabin` are not directly used.
 
-1. **Team onboarding:** Confirm Adedamola accepts the GitHub invitation, reviews the notebook, and agrees to documented task ownership.
-2. **Reproducibility:** Reconcile the standalone script with the current Colab notebook; verify that documented model results can be reproduced.
-3. **Robust validation:** Run repeated or 5-fold stratified cross-validation and report mean and variability. Investigate group-aware validation because passengers sharing a group may not be independent.
-4. **Feature ablation:** Compare raw and engineered feature sets under identical folds and model settings.
-5. **Model analysis:** Inspect feature importance and validation errors; consider one additional model family under the same validation protocol.
-6. **Submission:** After team review and model selection, submit the agreed file to Kaggle and record the accepted leaderboard score separately from local validation.
-7. **Communication:** Complete the README, data dictionary, and progress presentation; ensure both team members make genuine commits and speak during the final defense.
+Interpretation is deliberately limited: the experiment supports the combined engineered block on this split and model; it does not isolate the contribution of each individual feature and does not establish robustness across folds. Group size and surname frequency are calculated from train+test passenger metadata without target labels (target-free transductive construction). This choice is disclosed and must be checked using group-aware validation.
 
-## 9. Team responsibilities
+## 6. Progress against checkpoint expectations
 
-The following is a proposed division and must be updated to reflect actual work completed:
-- **Project lead (team member 1):** coordination, data audit, data dictionary, EDA integration, feature engineering, README/report integration, and presentation coordination.
-- **Adedamola:** independent EDA review, alternative feature/model experiments, cross-validation and tuning, error analysis, reproducibility checks, and presentation of the modelling/validation section.
+| Requirement | Status at report date | Evidence / next action |
+|---|---|---|
+| Competition objective, target and metric | Complete | README and notebook |
+| Data loading, dimensions, types and target distribution | Complete | Notebook and data dictionary |
+| EDA and figures | Initial EDA complete | Four figures committed; expand written interpretation if required |
+| Missing-value counts and treatment | Complete for train and test | Data dictionary |
+| Anomaly counts and decisions | Complete for specified integrity/IQR checks | Data dictionary |
+| Encoding, imputation and scaling | Implemented | Notebook; verify reproducibility |
+| Feature engineering and impact | Combined-block ablation complete | `feature_ablation.csv`; feature-by-feature ablation remains |
+| Baseline and three model families | Complete | Latest model comparison |
+| Hyperparameter tuning | Initial search complete | Tuned RF did not beat working RF; avoid unsupported tuning claims |
+| Validation and leakage controls | Partially complete | Stratified holdout; group-aware robustness still required |
+| Same-protocol comparison table | Complete for latest reported comparison | `model_comparison.csv` |
+| Final model / leaderboard comparison | In progress | RF provisional; Kaggle upload intentionally pending |
+| GitHub README and notebook | Complete at current stage | Repository links and committed notebook |
+| Both members' contribution evidence | In progress | Adedamola invited; acceptance and substantive commits not yet verified |
+| Intermediate report and short progress slides | Prepared | This report and `progress_presentation.pptx` |
 
-Both members should use their own GitHub accounts and commit only work they actually performed. The project should not claim completed contributions before the corresponding work and commits exist.
+## 7. Team roles and contribution evidence
 
-## 10. Current limitations
+The project lead has prepared the initial notebook workflow, data audit, feature-engineering integration and documentation. Adedamola has been invited to the GitHub repository; acceptance and independent work are not yet confirmed as of this report. Proposed tasks for Adedamola are independent EDA review, alternative feature/model experiments, cross-validation, error analysis and reproducibility checks. These are not reported as completed until supported by his work and commits.
 
-- The current reported comparison is based on one holdout split; robustness across folds has not yet been established.
-- The tuned model's holdout accuracy is slightly lower than the untuned Random Forest result.
-- Group/surname frequency features require transparent documentation and robustness checks.
-- The standalone script and current Colab notebook need to be reconciled before claiming full reproducibility.
-- No Kaggle leaderboard score is available because the submission has not been uploaded.
+Both members should use their own GitHub accounts, make attributable commits, and be prepared to explain their contributions during the defense. All team members are expected to attend and speak during the final defense under the course requirements previously provided to the team.
 
-## 11. Checkpoint conclusion
+## 8. Dated remaining-work plan
 
-The team has completed a substantial initial workflow: data audit, exploratory analysis, preprocessing, baseline modelling, comparison of three model families, initial hyperparameter search, and generation of a valid-format prediction file. The next phase focuses on reproducibility, validation robustness, controlled feature evaluation, and documented collaboration. The project is progressing, but the model should remain provisional until those checks are completed.
+| Due date | Owner | Deliverable / acceptance evidence |
+|---|---|---|
+| Thu 12 Nov 2026 | Project lead | Commit updated README, dictionary, status report, model table, ablation table and four EDA figures to their documented paths. |
+| Thu 12 Nov 2026 | Project lead + Adedamola | Confirm invitation accepted; agree task ownership and communication; record the agreement in the repository. |
+| Fri 13 Nov 2026 | Both | Each member reviews the notebook and report; make at least one substantive, attributable commit each; document exactly what changed. |
+| Fri 13 Nov 2026 | Adedamola | Reproduce the current holdout comparison or document discrepancies, with environment/seed details. |
+| Fri 13 Nov 2026 | Project lead | Verify README run instructions, repository paths, report links and presentation; send professor the public repository link and checkpoint summary. |
+| Mon 16 Nov 2026 | Adedamola | Run group-aware validation (grouped by PassengerId prefix) and report fold/holdout metrics and limitations. |
+| Tue 17 Nov 2026 | Both | Conduct feature-level ablation or permutation-based analysis; retain only defensible features. |
+| Wed 18 Nov 2026 | Adedamola | Complete validation error analysis and one additional model-family experiment under a consistent protocol. |
+| Thu 19 Nov 2026 | Project lead | Reconcile notebook and standalone script; record package versions, seeds and reproducible run instructions. |
+| Fri 20 Nov 2026 | Both | Review final candidate, update comparison/report/slides, then decide jointly whether to upload a Kaggle submission. Record leaderboard result separately if submitted. |
+
+Dates should be adjusted if the instructor's actual checkpoint time differs. The Friday checkpoint must not be represented as completed until both members' reviews and commits exist.
+
+## 9. Limitations and risks
+
+- The headline model comparison is based on one holdout split; cross-validation and group-aware validation are outstanding.
+- The controlled ablation uses a fixed model/split and tests the engineered block jointly, not individual feature contributions.
+- Group/surname counts use unlabeled train+test metadata; their value and robustness need group-aware evaluation.
+- The notebook's latest model results and the older standalone script are not yet fully reconciled; the notebook is the primary execution record.
+- No Kaggle leaderboard score is available because the team has deliberately not submitted.
+- Instructor approval for the competition-category exception should be retained in writing.
+
+## 10. Checkpoint conclusion
+
+The project has progressed beyond initial setup: data audit, EDA, missingness treatment, baseline, three model families, initial tuning, a controlled combined-feature ablation, prediction-file generation, repository notebook and checkpoint documentation are available. The work is on a credible path to the intermediate checkpoint, but final checkpoint readiness depends on committing the evidence, confirming Adedamola's participation, and completing the Friday reproducibility review. The final model remains provisional pending group-aware validation and team review.
