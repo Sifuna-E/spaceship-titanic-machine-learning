@@ -73,7 +73,7 @@ Interpretation is deliberately limited: the experiment supports the combined eng
 
 ## 7. Team roles and contribution evidence
 
-The project lead has prepared the initial notebook workflow, data audit, feature-engineering integration and documentation. Adedamola has been invited to the GitHub repository; acceptance and independent work are not yet confirmed as of this report. Proposed tasks for Adedamola are independent EDA review, alternative feature/model experiments, cross-validation, error analysis and reproducibility checks. These are not reported as completed until supported by his work and commits.
+Eugine prepared the initial notebook workflow, data audit, feature-engineering integration and documentation. Adedamola to add independent EDA review, alternative feature/model experiments, cross-validation, error analysis and reproducibility checks. 
 
 Both members should use their own GitHub accounts, make attributable commits, and be prepared to explain their contributions during the defense. All team members are expected to attend and speak during the final defense under the course requirements previously provided to the team.
 
@@ -81,18 +81,16 @@ Both members should use their own GitHub accounts, make attributable commits, an
 
 | Due date | Owner | Deliverable / acceptance evidence |
 |---|---|---|
-| Thu 12 Nov 2026 | Project lead | Commit updated README, dictionary, status report, model table, ablation table and four EDA figures to their documented paths. |
-| Thu 12 Nov 2026 | Project lead + Adedamola | Confirm invitation accepted; agree task ownership and communication; record the agreement in the repository. |
+| Thu 12 Nov 2026 | Eugine | Commit updated README, dictionary, status report, model table, ablation table and four EDA figures to their documented paths. |
 | Fri 13 Nov 2026 | Both | Each member reviews the notebook and report; make at least one substantive, attributable commit each; document exactly what changed. |
 | Fri 13 Nov 2026 | Adedamola | Reproduce the current holdout comparison or document discrepancies, with environment/seed details. |
-| Fri 13 Nov 2026 | Project lead | Verify README run instructions, repository paths, report links and presentation; send professor the public repository link and checkpoint summary. |
+| Fri 13 Nov 2026 |Eugine | Verify README run instructions, repository paths, report links and presentation; send professor the public repository link and checkpoint summary. |
 | Mon 16 Nov 2026 | Adedamola | Run group-aware validation (grouped by PassengerId prefix) and report fold/holdout metrics and limitations. |
 | Tue 17 Nov 2026 | Both | Conduct feature-level ablation or permutation-based analysis; retain only defensible features. |
 | Wed 18 Nov 2026 | Adedamola | Complete validation error analysis and one additional model-family experiment under a consistent protocol. |
-| Thu 19 Nov 2026 | Project lead | Reconcile notebook and standalone script; record package versions, seeds and reproducible run instructions. |
+| Thu 19 Nov 2026 | Eugine | Reconcile notebook and standalone script; record package versions, seeds and reproducible run instructions. |
 | Fri 20 Nov 2026 | Both | Review final candidate, update comparison/report/slides, then decide jointly whether to upload a Kaggle submission. Record leaderboard result separately if submitted. |
 
-Dates should be adjusted if the instructor's actual checkpoint time differs. The Friday checkpoint must not be represented as completed until both members' reviews and commits exist.
 
 ## 9. Limitations and risks
 
@@ -100,7 +98,6 @@ Dates should be adjusted if the instructor's actual checkpoint time differs. The
 - The controlled ablation uses a fixed model/split and tests the engineered block jointly, not individual feature contributions.
 - Group/surname counts use unlabeled train+test metadata; their value and robustness need group-aware evaluation.
 - The notebook's latest model results and the older standalone script are not yet fully reconciled; the notebook is the primary execution record.
-- No Kaggle leaderboard score is available because the team has deliberately not submitted.
 - Instructor approval for the competition-category exception should be retained in writing.
 
 ## 10. Checkpoint conclusion
