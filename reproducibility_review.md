@@ -68,19 +68,19 @@ The key parts that were explored are:
 
 The following will be checked:
 
-All referenced files are located in the documented locations.
+1. All referenced files are located in the documented locations.
 
-The Notebook filenames are the same as listed in the README.
+2. The Notebook filenames are the same as listed in the README.
 
-Source scripts exist and include the appropriate code.
+3. Source scripts exist and include the appropriate code.
 
-Report links refer to other documents that are already in place.
+4. Report links refer to other documents that are already in place.
 
-Figures are housed in the correct reports folder.
+5. Figures are housed in the correct reports folder.
 
-No unnecessary duplicate reports stored in the repository.
+6. No unnecessary duplicate reports stored in the repository.
 
-Documented outcome of review: Repository structure. The final verification of consistency between all the file references and the actual contents of the repository is required.
+**Documented outcome of review:** Repository structure. The final verification of consistency between all the file references and the actual contents of the repository is required.
 
 The notebook needs to be executed and reproducible.The notebook should be capable of being executed and reproduced.
 
