@@ -26,24 +26,41 @@ The team reports that the instructor approved this competition despite its “Ge
 
 ```text
 .
+spaceship-titanic-machine-learning/
+│
 ├── README.md
 ├── requirements.txt
+├── .gitignore
+├── submission.csv
+│
+├── Data/
+│   └── (local competition datasets, if retained)
+│
 ├── notebooks/
-│   └── spaceship_titanic_analysis.ipynb
+│   ├── spaceship_titanic_analysis.ipynb
+│   └── spaceship_titanic_feature_ablation.ipynb
+│
 ├── src/
-│   └── train_and_submit.py        # earlier standalone prototype; not the source of all latest reported scores
-├── reports/
-│   ├── data_dictionary.md
-│   ├── intermediate_status_report.md
-│   ├── model_comparison.csv
-│   ├── feature_ablation.csv
-│   ├── progress_presentation.pptx
-│   └── figures/
-│       ├── target_distribution.png
-│       ├── numeric_distributions.png
-│       ├── categorical_distributions.png
-│       └── target_relationships.png
-└── submission.csv                 # generated predictions; submitted
+│   ├── train_and_submit.py
+│   └── feature_ablation.py
+│
+└── reports/
+    ├── intermediate_status_report.md
+    ├── data_dictionary.md
+    ├── model_comparison.csv
+    ├── feature_ablation.csv
+    ├── kaggle_submission_log.csv
+    ├── eda_findings.md
+    ├── error_analysis.md
+    ├── reproducibility_review.md
+    ├── progress_presentation.pptx
+    │
+    └── figures/
+        ├── target_distribution.png
+        ├── missing_values.png
+        ├── numeric_distributions.png
+        ├── categorical_distributions.png
+        └── target_relationships.png
 ```
 
 ## How to run the committed notebook (recommended)
@@ -122,6 +139,27 @@ The feature-ablation experiment compared the core feature set with an expanded f
 - Expanded features accuracy: 0.8056
 - Improvement: approximately 1.84 percentage points
 
+## Project Files and Documentation
+
+### Analysis Notebooks
+
+- [Main Spaceship Titanic Analysis](notebooks/spaceship_titanic_analysis.ipynb) – Dataset exploration, preprocessing, feature engineering, model training and evaluation.
+- [Feature Ablation Analysis](notebooks/spaceship_titanic_feature_ablation.ipynb) – Comparison of core and engineered feature sets using a consistent validation approach.
+
+### Source Code
+
+- [`src/train_and_submit.py`](src/train_and_submit.py) – Model training and submission workflow.
+- [`src/feature_ablation.py`](src/feature_ablation.py) – Reproducible feature-ablation experiment.
+
+### Reports and Results
+
+- [`reports/intermediate_status_report.md`](reports/intermediate_status_report.md) – Project progress, results and team contributions.
+- [`reports/data_dictionary.md`](reports/data_dictionary.md) – Dataset variables and missing-value documentation.
+- [`reports/model_comparison.csv`](reports/model_comparison.csv) – Model evaluation results.
+- [`reports/feature_ablation.csv`](reports/feature_ablation.csv) – Feature-ablation results.
+- [`reports/kaggle_submission_log.csv`](reports/kaggle_submission_log.csv) – Kaggle submission record.
+- [`reports/progress_presentation.pptx`](reports/progress_presentation.pptx) – Project presentation.
+
 ### Kaggle Submission
 
 A valid submission containing 4,277 predictions was successfully uploaded to the Kaggle Spaceship Titanic competition.
@@ -132,4 +170,26 @@ A valid submission containing 4,277 predictions was successfully uploaded to the
 The Kaggle public score is separate from the local holdout validation accuracy.
 
 See `reports/` for the detailed experiment results, submission record, and project status.
+
+## Academic Integrity, External Resources and Limitations
+
+The project was developed for the Kaggle Spaceship Titanic machine-learning competition. The team conducted its own data exploration, preprocessing, feature engineering, model experimentation, validation and evaluation.
+
+Official resources consulted, including:
+
+- [Kaggle Spaceship Titanic Competition](https://www.kaggle.com/competitions/spaceship-titanic)
+- [Scikit-learn Documentation](https://scikit-learn.org/stable/)
+- [Pandas Documentation](https://pandas.pydata.org/docs/)
+- WikiHow
+- LLMs- Google AI Mode, ChatGPT, Claude
+
+These are references to the competition and software documentation.
+
+### Limitations
+
+- The public leaderboard score reflects only the evaluated Kaggle public test subset and may not represent final private leaderboard performance.
+- The validation results depend on the selected holdout split.
+- Engineered passenger-group and surname-count features use passenger metadata and require careful interpretation.
+- Feature-ablation results do not establish the independent contribution of every engineered feature.
+- Model performance may vary with alternative validation strategies and unseen passenger groups.
 
