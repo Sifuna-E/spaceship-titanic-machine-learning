@@ -1,7 +1,7 @@
 # Spaceship Titanic — Data Analytics and Machine Learning
 
 **Course project | Kaggle binary-classification competition**  
-**Audit/update date:** 12 November 2026
+**Audit/update date:** 13 November 2026
 
 ## Project overview
 
@@ -11,13 +11,13 @@ This project predicts whether a passenger was transported to another dimension (
 - Training data: 8,693 rows × 14 columns
 - Test data: 4,277 rows × 13 columns
 - Current best result in the latest reported Colab model comparison: Random Forest validation accuracy **0.8045**
-- Kaggle submission: a valid-format 4,277-row `submission.csv` has been generated but **has not been submitted**.
+- Kaggle submission: a valid-format 4,277-row `submission.csv` has been generated and submitted.
 
-The team reports that the instructor approved this competition despite its “Getting Started” category. Retain the written approval and confirm that it explicitly covers the course-rule exception.
+The team reports that the instructor approved this competition despite its “Getting Started” category. 
 
 ## Team and contributions
 
-| Member | Role (proposed; update with evidence as work is completed) |
+| Member | Role  |
 |---|---|
 | Eugine | Coordination, data audit, EDA integration, feature engineering, documentation and presentation coordination. |
 | Adedamola | Independent EDA review, additional feature/model experiments, validation and tuning, error analysis, reproducibility review. |
@@ -43,7 +43,7 @@ The team reports that the instructor approved this competition despite its “Ge
 │       ├── numeric_distributions.png
 │       ├── categorical_distributions.png
 │       └── target_relationships.png
-└── submission.csv                 # generated predictions; not submitted
+└── submission.csv                 # generated predictions; submitted
 ```
 
 ## How to run the committed notebook (recommended)
@@ -98,11 +98,38 @@ The engineered set improved holdout accuracy by **1.84 percentage points** in th
 ## EDA figures
 
 The committed figures are stored in [`reports/figures/`](reports/figures/): target distribution, numeric distributions, categorical distributions, and selected feature/target relationships. They are descriptive; associations should not be interpreted as causal effects.
+## Results and Kaggle Submission
 
-## Work remaining and checkpoint
+### Model Evaluation
 
-See [`reports/intermediate_status_report.md`](reports/intermediate_status_report.md) for the dated action plan. Priorities are team contribution evidence, group-aware validation, model reproducibility, feature-level analysis, error analysis and final review before any Kaggle submission.
+Models were evaluated using a stratified 80/20 holdout split with `random_state=42`. The same validation split was used for model comparison.
 
-## Academic integrity and limitations
+| Model | Validation Accuracy |
+|---|---:|
+| Majority Class Baseline | 0.5037 |
+| Logistic Regression | 0.7901 |
+| Random Forest | 0.8045 |
+| Tuned Random Forest | 0.8028 |
+| Gradient Boosting | 0.7907 |
 
-Cite any external notebooks, papers, tutorials or code used. Do not copy public notebooks blindly. Group/surname frequency features are calculated from train+test passenger metadata without target labels; this target-free transductive step is documented and requires a robustness check. Keep local validation scores separate from leaderboard results. The final Kaggle submission is deliberately pending team review.
+The untuned Random Forest achieved the strongest result among these reported holdout experiments.
+
+### Feature Ablation
+
+The feature-ablation experiment compared the core feature set with an expanded feature set containing engineered predictors.
+
+- Core features accuracy: 0.7872
+- Expanded features accuracy: 0.8056
+- Improvement: approximately 1.84 percentage points
+
+### Kaggle Submission
+
+A valid submission containing 4,277 predictions was successfully uploaded to the Kaggle Spaceship Titanic competition.
+
+- Kaggle public leaderboard score: **0.79611**
+- Submission file: `submission.csv`
+
+The Kaggle public score is separate from the local holdout validation accuracy.
+
+See `reports/` for the detailed experiment results, submission record, and project status.
+
