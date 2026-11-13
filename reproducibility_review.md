@@ -123,48 +123,30 @@ The notebook should also provide details on how to get these datasets and load t
 **5. Software Dependencies**
 
 Python is used for the project, along with the scikit-learn machine-learning ecosystem. The primary dependencies that are likely to be needed are:
-
 - Pandas – Data manipulation and analysis.
-
 - NumPy – numerical computation.
-
 - Matplotlib – data visualisation.
-
 - The use of Seaborn – statistical visualisation.
-
 - scikit-learn – pre-processing, model training, model evaluation.
-
 - Jupyter/Google Colab – an environment for running notebooks.
 
 **Review procedure**
 
-The requirements.txt file should be checked to ensure that the packages are included that are used by the notebooks and scripts.
-
-The dependency list should be checked with the list of actual imports in the project.
-
-It is also important to check that the notebook is compatible with the versions of the packages mentioned, including the arguments given to the libraries that may vary between different library versions.
+The requirements.txt file should be checked to ensure that the packages are included that are used by the notebooks and scripts. The dependency list should be checked with the list of actual imports in the project. It is also important to check that the notebook is compatible with the versions of the packages mentioned, including the arguments given to the libraries that may vary between different library versions.
 
 **Review outcome:** Dependency file needs to be checked in the project imports and worked successfully.
 
 **6. Data Pre-processing and Missing Value Treatment**
 
-The data set is incomplete with some missing data for passengers, both categorical and numeric.
-
-The project employs preprocessing techniques to preprocess the data prior to feeding it to the machine-learning models.
+The data set is incomplete with some missing data for passengers, both categorical and numeric. The project employs preprocessing techniques to preprocess the data prior to feeding it to the machine-learning models.
 
 The review should establish:
-
-Appropriate imputation strategy is used for missing numerical values.
-
-Where categorical values are missing, these are dealt with in an adequate manner.
-
-Categorical variables are encoded prior to training the model.
-
-Where necessary, the model is scaled numerically.
-
-Only the training data is used for pre-processing.
-
-The validation data is preprocessed with the preprocessing fitted in the training data.
+- Appropriate imputation strategy is used for missing numerical values.
+- Where categorical values are missing, these are dealt with in an adequate manner.
+- Categorical variables are encoded prior to training the model.
+- Where necessary, the model is scaled numerically.
+- Only the training data is used for pre-processing.
+- The validation data is preprocessed with the preprocessing fitted in the training data.
 
 The data leakage can be mitigated by using a scikit-learn Pipeline or similar controlled procedure.
 
