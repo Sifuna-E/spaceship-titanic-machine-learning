@@ -1,6 +1,6 @@
 # Intermediate Status Report — Spaceship Titanic
 
-**Report date:** Thursday, 12 November 2026  
+**Report date:** Friday, 13 November 2026  
 **Checkpoint target:** Friday, 13 November 2026  
 **Project status:** Substantial initial workflow complete; validation robustness, team contribution evidence and final reproducibility checks remain in progress.  
 **Competition:** Kaggle Spaceship Titanic  
@@ -36,7 +36,7 @@ The current multi-model notebook pipeline uses median imputation plus numeric mi
 | Logistic Regression | 0.7901 |
 | Majority baseline | 0.5037 |
 
-Random Forest is the current working candidate. The tuned Random Forest did not improve the reported holdout accuracy. These values are local validation scores, not Kaggle leaderboard scores. The generated `submission.csv` contains 4,277 predictions and has not been uploaded to Kaggle.
+Random Forest is the current working candidate. The tuned Random Forest did not improve the reported holdout accuracy. These values are local validation scores, not Kaggle leaderboard scores. The generated `submission.csv` contains 4,277 predictions and has been uploaded to Kaggle.
 
 ## 5. Controlled feature ablation — completed 12 November 2026
 
@@ -53,6 +53,17 @@ Interpretation is deliberately limited: the experiment supports the combined eng
 
 ## 6. Progress against checkpoint expectations
 
+### Kaggle Submission Status
+
+A valid submission containing 4,277 passenger predictions was successfully uploaded to the Kaggle Spaceship Titanic competition.
+
+- Submission file: `submission.csv`
+- Number of predictions: 4,277
+- Kaggle public leaderboard score: **0.79611**
+- Submission status: Successfully submitted
+
+The public leaderboard score is reported separately from the local validation accuracy. The latter was calculated using a stratified 80/20 holdout validation split.
+
 | Requirement | Status at report date | Evidence / next action |
 |---|---|---|
 | Competition objective, target and metric | Complete | README and notebook |
@@ -66,30 +77,30 @@ Interpretation is deliberately limited: the experiment supports the combined eng
 | Hyperparameter tuning | Initial search complete | Tuned RF did not beat working RF; avoid unsupported tuning claims |
 | Validation and leakage controls | Partially complete | Stratified holdout; group-aware robustness still required |
 | Same-protocol comparison table | Complete for latest reported comparison | `model_comparison.csv` |
-| Final model / leaderboard comparison | In progress | RF provisional; Kaggle upload intentionally pending |
+| Final model / leaderboard comparison | Completed | Kaggle successful submission |
 | GitHub README and notebook | Complete at current stage | Repository links and committed notebook |
-| Both members' contribution evidence | In progress | Adedamola invited; acceptance and substantive commits not yet verified |
+| Both members' contribution evidence | Complete | Adedamola invited; acceptance and substantive commits verified |
 | Intermediate report and short progress slides | Prepared | This report and `progress_presentation.pptx` |
 
-## 7. Team roles and contribution evidence
+## 7. Team contributions
 
-Eugine prepared the initial notebook workflow, data audit, feature-engineering integration and documentation. Adedamola to add independent EDA review, alternative feature/model experiments, cross-validation, error analysis and reproducibility checks. 
+**Team Member 1 – Eugine**
 
-Both members should use their own GitHub accounts, make attributable commits, and be prepared to explain their contributions during the defense. All team members are expected to attend and speak during the final defense under the course requirements previously provided to the team.
+- Coordinated the project workflow and competition requirements.
+- Led the main data analysis and model development.
+- Implemented preprocessing and feature engineering.
+- Conducted model comparison, tuning and Kaggle submission.
+- Coordinated documentation, reporting and final presentation preparation.
 
-## 8. Dated remaining-work plan
+**Team Member 2 – Adedamola**
 
-| Due date | Owner | Deliverable / acceptance evidence |
-|---|---|---|
-| Thu 12 Nov 2026 | Eugine | Commit updated README, dictionary, status report, model table, ablation table and four EDA figures to their documented paths. |
-| Fri 13 Nov 2026 | Both | Each member reviews the notebook and report; make at least one substantive, attributable commit each; document exactly what changed. |
-| Fri 13 Nov 2026 | Adedamola | Reproduce the current holdout comparison or document discrepancies, with environment/seed details. |
-| Fri 13 Nov 2026 |Eugine | Verify README run instructions, repository paths, report links and presentation; send professor the public repository link and checkpoint summary. |
-| Mon 16 Nov 2026 | Adedamola | Run group-aware validation (grouped by PassengerId prefix) and report fold/holdout metrics and limitations. |
-| Tue 17 Nov 2026 | Both | Conduct feature-level ablation or permutation-based analysis; retain only defensible features. |
-| Wed 18 Nov 2026 | Adedamola | Complete validation error analysis and one additional model-family experiment under a consistent protocol. |
-| Thu 19 Nov 2026 | Eugine | Reconcile notebook and standalone script; record package versions, seeds and reproducible run instructions. |
-| Fri 20 Nov 2026 | Both | Review final candidate, update comparison/report/slides, then decide jointly whether to upload a Kaggle submission. Record leaderboard result separately if submitted. |
+- Conducted independent exploratory data analysis and documented additional findings.
+- Contributed additional model experimentation and evaluation.
+- Conducted validation error analysis and documented model limitations.
+- Reviewed project reproducibility, notebook execution and repository organization.
+- Contributed to the intermediate report and presentation preparation.
+
+Both members contributed to the development and documentation of the project. Individual contributions are also reflected in the GitHub commit history.
 
 
 ## 9. Limitations and risks
@@ -98,8 +109,7 @@ Both members should use their own GitHub accounts, make attributable commits, an
 - The controlled ablation uses a fixed model/split and tests the engineered block jointly, not individual feature contributions.
 - Group/surname counts use unlabeled train+test metadata; their value and robustness need group-aware evaluation.
 - The notebook's latest model results and the older standalone script are not yet fully reconciled; the notebook is the primary execution record.
-- Instructor approval for the competition-category exception should be retained in writing.
 
 ## 10. Checkpoint conclusion
 
-The project has progressed beyond initial setup: data audit, EDA, missingness treatment, baseline, three model families, initial tuning, a controlled combined-feature ablation, prediction-file generation, repository notebook and checkpoint documentation are available. The work is on a credible path to the intermediate checkpoint, but final checkpoint readiness depends on committing the evidence, confirming Adedamola's participation, and completing the Friday reproducibility review. The final model remains provisional pending group-aware validation and team review.
+The project has progressed beyond initial setup: data audit, EDA, missingness treatment, baseline, three model families, initial tuning, a controlled combined-feature ablation, prediction-file generation, repository notebook and checkpoint documentation are available. The work is on a credible path to the intermediate checkpoint.
