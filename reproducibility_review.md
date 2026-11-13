@@ -24,11 +24,11 @@ The data will be available in two files:
 
 
 Dataset  | Observations | Variables
-
+------------------------------------
 Training dataset | 8693 | 14
-
+------------------------------------
 Testing dataset | 4277 | 13
-
+------------------------------------
 
 The training set includes the target variable, Transported, which represents whether or not a passenger was transported to another dimension.
 
