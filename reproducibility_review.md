@@ -7,14 +7,15 @@ Review date: 13 November 2026
 Repository: https://github.com/Sifuna-E/spaceship-titanic-machine-learning
 
 **1. Introduction**
+
 The aim of this reproducibility review is to independently evaluate the organisation, documentation and execution needs of the Spaceship Titanic machine-learning project.
 The reproducibility is important because other researchers, students, and the course instructor should understand the analytical process, have access to the necessary files, can run the code and check the results reported.
 This review is specifically about availability of project files, loading of dataset, execution of the notebook, software dependencies, preprocessing procedure, model evaluation, documenting results and recording submission history on Kaggle.
 During the review, it was also determined which aspects need to be improved so that the project can be reproduced independently.
 
 **2.1. Data availability and loading**
-The project uses the official Kaggle Spaceship Titanic competition data. The data will be available in two files:
 
+The project uses the official Kaggle Spaceship Titanic competition data. The data will be available in two files:
 
 Dataset  | Observations | Variables
 ------------------------------------
@@ -28,15 +29,10 @@ The training set includes the target variable, Transported, which represents whe
 The test set is a set of data without the label variable and is used to make predictions to submit to the kaggle website.
 
 **Review points**
-
 - Ensure that training and test data is properly labeled.
-
 - Ensure data loading code is referring to the proper names.
-
 - Confirm that the instructions provide information on how a new user can access the original Kaggle datasets.
-
 - Ensure that the notebook doesn't use local paths that are not accessible.
-
 - Make sure that the target variable is not included in the predictions of the competition test.
 
 **Review outcome:** Dimension of the datasets is documented. After clean-session execution, it is important to have independent verification of the complete data-loading procedure.
