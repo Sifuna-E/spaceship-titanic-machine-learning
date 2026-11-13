@@ -112,15 +112,15 @@ The following should be checked:
 
 - Accurate calculation of the validation metrics.
 
-Acceptable generation of experiment outputs.
+- Acceptable generation of experiment outputs.
 
-No unhandled execution errors.
+- No unhandled execution errors.
 
 The notebook should also provide details on how to get these datasets and load them in a new Colab session.
 
-Review outcome: Execution status of each notebook should be reviewed. A notebook is not considered to be reproducible until it is fully executed and successful from a new session.
+**Review outcome:** Execution status of each notebook should be reviewed. A notebook is not considered to be reproducible until it is fully executed and successful from a new session.
 
-5. Software Dependencies
+**5. Software Dependencies**
 
 Python is used for the project, along with the scikit-learn machine-learning ecosystem.
 
