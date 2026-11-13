@@ -122,23 +122,21 @@ The notebook should also provide details on how to get these datasets and load t
 
 **5. Software Dependencies**
 
-Python is used for the project, along with the scikit-learn machine-learning ecosystem.
+Python is used for the project, along with the scikit-learn machine-learning ecosystem. The primary dependencies that are likely to be needed are:
 
-The primary dependencies that are likely to be needed are:
+- Pandas – Data manipulation and analysis.
 
-Pandas – Data manipulation and analysis.
+- NumPy – numerical computation.
 
-NumPy – numerical computation.
+- Matplotlib – data visualisation.
 
-Matplotlib – data visualisation.
+- The use of Seaborn – statistical visualisation.
 
-The use of Seaborn – statistical visualisation.
+- scikit-learn – pre-processing, model training, model evaluation.
 
-scikit-learn – pre-processing, model training, model evaluation.
+- Jupyter/Google Colab – an environment for running notebooks.
 
-Jupyter/Google Colab – an environment for running notebooks.
-
-Review procedure
+**Review procedure**
 
 The requirements.txt file should be checked to ensure that the packages are included that are used by the notebooks and scripts.
 
