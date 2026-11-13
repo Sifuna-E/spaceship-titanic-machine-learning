@@ -1,6 +1,7 @@
 Explain the concepts behind the Spaceship Titanic Machine Learning Project.Describe what the Spaceship Titanic Machine Learning Project is about.
 
 **Reviewer: Adedamola**
+
 Create a space travel model to predict how many passengers will be transported at any given time.
 Review date: 13 November 2026
 Repository: https://github.com/Sifuna-E/spaceship-titanic-machine-learning
