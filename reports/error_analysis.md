@@ -39,7 +39,8 @@ But wrongly counted 201 passengers as transported when they were not. Those are 
 
 It also falsely calculated 147 transported passengers as "not transported". These are "no" predictions.
 
-**Figure 1: Confusion Matrix**
+<img width="1800" height="1500" alt="confusion_matrix" src="https://github.com/user-attachments/assets/ac037198-a045-49ac-9014-9786ec504fc0" />
+
 
 The visualisation of the confusion matrix is saved in `reports/figures/confusion_matrix.png`.
 
