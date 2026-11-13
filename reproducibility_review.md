@@ -54,17 +54,17 @@ Notebooks, source code and supporting documentation are separated in the reposit
 
 The key parts that were explored are:
 
--notebooks/ – Jupyter notebooks with data analysis, modelling and feature-ablation experiments.
+- notebooks/ – Jupyter notebooks with data analysis, modelling and feature-ablation experiments.
 
--src/ – Python scripts to train models and perform feature-ablation procedures.
+- src/ – Python scripts to train models and perform feature-ablation procedures.
 
--reports/ – Supporting documents, project reports, analytical results and model comparisons.
+- reports/ – Supporting documents, project reports, analytical results and model comparisons.
 
--requirements.txt – Python packagelist deps.
+- requirements.txt – Python packagelist deps.
 
--README.md – Principal description of the project and execution instructions.
+- README.md – Principal description of the project and execution instructions.
 
-Review points
+**Review points**
 
 The following will be checked:
 
