@@ -21,23 +21,13 @@ The project uses the official Kaggle Spaceship Titanic competition data.
 
 The data will be available in two files:
 
-Dataset
 
-Observations
+Dataset  | Observations | Variables
 
-Variables
+Training dataset | 8693 | 14
 
-Training dataset
+Testing dataset | 4277 | 13
 
-8,693
-
-14
-
-Testing dataset
-
-4,277
-
-13
 
 The training set includes the target variable, Transported, which represents whether or not a passenger was transported to another dimension.
 
