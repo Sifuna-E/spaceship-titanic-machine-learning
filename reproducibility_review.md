@@ -7,20 +7,13 @@ Review date: 13 November 2026
 Repository: https://github.com/Sifuna-E/spaceship-titanic-machine-learning
 
 **1. Introduction**
-
 The aim of this reproducibility review is to independently evaluate the organisation, documentation and execution needs of the Spaceship Titanic machine-learning project.
-
 The reproducibility is important because other researchers, students, and the course instructor should understand the analytical process, have access to the necessary files, can run the code and check the results reported.
-
 This review is specifically about availability of project files, loading of dataset, execution of the notebook, software dependencies, preprocessing procedure, model evaluation, documenting results and recording submission history on Kaggle.
-
 During the review, it was also determined which aspects need to be improved so that the project can be reproduced independently.
 
 **2.1. Data availability and loading**
-
-The project uses the official Kaggle Spaceship Titanic competition data.
-
-The data will be available in two files:
+The project uses the official Kaggle Spaceship Titanic competition data. The data will be available in two files:
 
 
 Dataset  | Observations | Variables
