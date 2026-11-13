@@ -144,9 +144,9 @@ The dependency list should be checked with the list of actual imports in the pro
 
 It is also important to check that the notebook is compatible with the versions of the packages mentioned, including the arguments given to the libraries that may vary between different library versions.
 
-Review outcome: Dependency file needs to be checked in the project imports and worked successfully.
+**Review outcome:** Dependency file needs to be checked in the project imports and worked successfully.
 
-6. Data Pre-processing and Missing Value Treatment
+**6. Data Pre-processing and Missing Value Treatment**
 
 The data set is incomplete with some missing data for passengers, both categorical and numeric.
 
