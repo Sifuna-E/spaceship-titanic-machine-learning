@@ -84,33 +84,33 @@ The following will be checked:
 
 The notebook needs to be executed and reproducible.The notebook should be capable of being executed and reproduced.
 
-The Jupyter notebooks are mainly executed in Google Colab.
+**4. The Jupyter notebooks are mainly executed in Google Colab.**
 
 The following principal analytical notebooks are:
 
-spaceship_titanic_analysis.ipynb
+1. spaceship_titanic_analysis.ipynb
 
-spaceship_titanic_feature_ablation.ipynb
+2. spaceship_titanic_feature_ablation.ipynb
 
-adedamola_additional_model_experiment.ipynb
+3. adedamola_additional_model_experiment.ipynb
 
-Review procedure
+**Review procedure**
 
 Every notebook must be run from top to bottom in Google Colab.
 
 The following should be checked:
 
-Successful library imports.
+- Successful library imports.
 
-Successful dataset loading.
+- Successful dataset loading.
 
-Proper data cleaning and pre-processing.
+- Proper data cleaning and pre-processing.
 
-Successful creation of EDA figures.
+- Successful creation of EDA figures.
 
-Successful training of a model.
+- Successful training of a model.
 
-Accurate calculation of the validation metrics.
+- Accurate calculation of the validation metrics.
 
 Acceptable generation of experiment outputs.
 
