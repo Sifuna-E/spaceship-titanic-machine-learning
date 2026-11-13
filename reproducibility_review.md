@@ -6,7 +6,7 @@ Create a space travel model to predict how many passengers will be transported a
 Review date: 13 November 2026
 Repository: https://github.com/Sifuna-E/spaceship-titanic-machine-learning
 
-1. Introduction
+**1. Introduction**
 
 The aim of this reproducibility review is to independently evaluate the organisation, documentation and execution needs of the Spaceship Titanic machine-learning project.
 
@@ -16,7 +16,7 @@ This review is specifically about availability of project files, loading of data
 
 During the review, it is also determined which aspects need to be improved so that the project can be reproduced independently.
 
-2.1. Data availability and loading
+**2.1. Data availability and loading**
 
 The project uses the official Kaggle Spaceship Titanic competition data.
 
